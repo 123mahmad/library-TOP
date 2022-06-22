@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evercise</title>
+</head>
+<body>
+  <script>
+    function bookCnstrctr(title,author,pageCount,status) {
+      this.title = title;
+      this.author = author;
+      this.pageCount = pageCount;
+      this.status = status;
+      this.info = function() {
+        let statusStr = ``;
+        if (this.status == `read`) {
+          statusStr = `already read`};
+        if (this.status == `unread`) {
+          statusStr = `not read yet`};
+        return `${this.title} by ${this.author}, ${this.pageCount} pages, ${statusStr}.`;
+      };
+    };
+    const book1 = new bookCnstrctr(`abc`,`xyz`,300,`unread`);
+    console.log(book1.info());
+  </script>
+</body>
+</html>
