@@ -7,8 +7,19 @@
   <title>Evercise</title>
 </head>
 <body>
+  
+  <label for="bookTitle">Enter Title</label>
+  <input type="text" name="bookTitle" id="bookTitle">
+  <label for="bookAuthor">Enter Author Name</label>
+  <input type="text" name="bookAuthor" id="bookAuthor">
+  <label for="bookPageCount">Enter Page Count</label>
+  <input type="text" name="bookPageCount" id="bookPageCount">
+  <label for="bookStatus">Have you read this book?</label>
+  <input type="checkbox" name="bookStatus" id="bookStatus">
+  <button id="addBook">Add Book</button>
+
   <script>
-    function bookCnstrctr(title,author,pageCount,status) {
+    function book(title,author,pageCount,status) {
       this.title = title;
       this.author = author;
       this.pageCount = pageCount;
@@ -22,8 +33,20 @@
         return `${this.title} by ${this.author}, ${this.pageCount} pages, ${statusStr}.`;
       };
     };
-    const book1 = new bookCnstrctr(`abc`,`xyz`,300,`unread`);
-    console.log(book1.info());
+    let library = [];
+    let addBook = document.querySelector(`#addBook`);
+    addBook.addEventListener("click",addBookFunc);
+    function addBookFunc() {
+      let newTitle = document.querySelector(`#bookTitle`).value;
+      let newAuthor = document.querySelector(`#bookAuthor`).value;
+      let newPageCount = document.querySelector(`#bookPageCount`).value;
+      let newStatus = document.querySelector(`#bookStatus`).checked;
+      if (newStatus == true) {newStatus = `read`};
+      if (newStatus == false) {newStatus = `unread`};
+      let newBook = new book(newTitle,newAuthor,newPageCount,newStatus);
+      library.push(newBook);
+      console.log(library[library.length-1]);
+    }
   </script>
 </body>
 </html>
