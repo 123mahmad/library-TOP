@@ -17,6 +17,7 @@
   <label for="bookStatus">Have you read this book?</label>
   <input type="checkbox" name="bookStatus" id="bookStatus">
   <button id="addBook">Add Book</button>
+  <p></p>
 
   <script>
     function book(title,author,pageCount,status) {
@@ -45,7 +46,11 @@
       if (newStatus == false) {newStatus = `unread`};
       let newBook = new book(newTitle,newAuthor,newPageCount,newStatus);
       library.push(newBook);
+      console.log(library);
       console.log(library[library.length-1]);
+      library.forEach(book => {
+        document.querySelector(`p`).textContent = book.info();
+      });
     }
   </script>
 </body>
